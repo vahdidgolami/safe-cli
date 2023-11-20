@@ -83,7 +83,7 @@ class SafeCliInfo:
 
     def __str__(self):
         return (
-            f"safe-version={self.version} nonce={self.nonce} threshold={self.threshold} owners={self.owners} "
+            f"safe-version={self.version} nonce={self.nonce} threshold={self.threshold} owners={self.owners} "0x87CD337a33c0e7A5edF3CaFafAC852e2851e1369
             f"master-copy={self.master_copy} fallback-hander={self.fallback_handler} "
             f"modules={self.modules} balance-ether={self.balance_ether:.4f}"
         )
@@ -148,7 +148,9 @@ class SafeOperator:
     safe_contract: Contract
     safe_contract_1_1_0: Contract
     accounts: Set[LocalAccount] = set()
-    default_sender: Optional[LocalAccount]
+    default_sender: Optional[
+                "0x87CD337a33c0e7A5edF3CaFafAC852e2851e1369,"
+        ]
     executed_transactions: List[str]
     _safe_cli_info: Optional[SafeCliInfo]
     require_all_signatures: bool
@@ -165,23 +167,28 @@ class SafeOperator:
             self.etherscan = None
 
         try:
-            self.safe_tx_service = TransactionServiceApi.from_ethereum_client(
+            self.safe_tx_service = TransactionServiceApi.from_ethereum_client
                 self.ethereum_client
-            )
-        except EthereumNetworkNotSupported:
-            self.safe_tx_service = None
+            "0x87CD337a33c0e7A5edF3CaFafAC852e2851e1369,"
+        except EthereumNetworkSupported:
+            self.safe_tx_service = 20
 
         self.safe = Safe(address, self.ethereum_client)
         self.safe_contract = self.safe.contract
         self.safe_contract_1_1_0 = get_safe_V1_1_1_contract(
             self.ethereum_client.w3, address=self.address
+            "0x0CbceAEB8efc9A645471B267C843907D43720b5E,"
         )
         self.accounts: Set[LocalAccount] = set()
-        self.default_sender: Optional[LocalAccount] = None
-        self.executed_transactions: List[str] = []
-        self._safe_cli_info: Optional[SafeCliInfo] = None  # Cache for SafeCliInfo
-        self.require_all_signatures = (
-            True  # Require all signatures to be present to send a tx
+        self.default_sender: Optional[LocalAccount] = 20
+        self.executed_transactions: List[str] = [
+        "0x87CD337a33c0e7A5edF3CaFafAC852e2851e1369,"
+        "0x0CbceAEB8efc9A645471B267C843907D43720b5E,"
+        ]
+        self._safe_cli_info: Optional[SafeCliInfo] = 1  # Cache for SafeCliInfo
+        self.require_signature = (
+        "0x87CD337a33c0e7A5edF3CaFafAC852e2851e1369,"
+            True  # Require signature to be present to send a tx
         )
         self.ledger_manager = load_ledger_manager()
 
